@@ -1,21 +1,28 @@
+import sqlalchemy
 from flask_restful import Resource, reqparse 
-
+from Models.Permits import PermitModel
+#from credentials import connection
 
 class Permit(Resource):
 
     parser = reqparse.RequestParser()
 
-    parser = reqparse.add_argument(
+    parser.add_argument(
         'permit_id'
         ,type = str
         ,required = True 
         ,help = 'permit_id cannot be blank.'
     )
-    
-    
-    def get(self, permit_id):
-        return {'permit_id':permit_id}
 
-    
+    #__table__ = Base.metadata.tables['permits']
+
+    def get(self, permit_id):
+        permit = PermitModel.find_by_permit_id(permit_id)
+        if permit:
+            return permit.json()
+        return {'message' : f'PermitID: {permit_id} not found'}, 404
+
+
+
 
 
