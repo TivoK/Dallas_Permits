@@ -7,7 +7,7 @@ class PermitModel(db.Model):
 
     PermitType = db.Column(db.String(100))	
     PermitID = db.Column(db.String(50), primary_key = True)	
-    IssuedDate	= db.Column(db.Date)
+    IssuedDate = db.Column(db.Date)
     Address	= db.Column(db.String(250))	
     ZipCode	= db.Column(db.Integer)
     Mapsco	= db.Column(db.String(100))
@@ -61,6 +61,6 @@ class PermitModel(db.Model):
             class PermitModel: Initializes the PermitModel.  
 
         """
-        print(type(cls.query.filter_by(PermitID = permit_id).first()))
+
         return cls.query.filter_by(PermitID = permit_id).first() #limit to 1
 
