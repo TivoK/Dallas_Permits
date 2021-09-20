@@ -64,3 +64,15 @@ class PermitModel(db.Model):
 
         return cls.query.filter_by(PermitID = permit_id).first() #limit to 1
 
+    @classmethod
+    def find_permits_by_date(cls,beg_date: str, end_date: str):
+        """Method for retrieving Permits by Date.
+        Args:
+            beg_date (string): string value that represents the date
+
+        Returns:
+            class PermitModel: 
+        """
+        return cls.query.filter(cls.IssuedDate.between(beg_date, end_date))
+
+
