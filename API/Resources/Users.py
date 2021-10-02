@@ -33,9 +33,10 @@ class UserLogin(Resource):
         """
         #gets the parser data that is passed.
         data = _user_data_parser.parse_args()
-
+ 
         user = Users.find_user_name(data['username'])
-        if user and safe_str_cmp(data['password'],user.UserPassword):
+        
+        if user and safe_str_cmp(user.UserPassword, data['password']):
             return {'message': 'User Login Successful.'}, 200
         return {'message': 'Invalid Credentials submitted.'}, 401
 
