@@ -19,6 +19,7 @@ class Users (db.Model):
         return {
              'UserID': self.UserID
             ,'UserName': self.UserName
+           # ,'UserPassword':self.UserPassword
         }
 
     @classmethod

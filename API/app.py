@@ -1,6 +1,7 @@
 from flask                import Flask 
 from flask_restful        import Api 
 from Resources.Permits    import Permit, PermitList
+from Resources.Users      import UserLogin
 from Security.credentials import connection
 
 app = Flask(__name__)
@@ -11,6 +12,7 @@ api = Api(app)
 
 api.add_resource(Permit, '/permit/<string:permit_id>')
 api.add_resource(PermitList,'/permits/begdate=<string:beg_date>&enddate=<string:end_date>')
+api.add_reourse(UserLogin, '/login')
 
 
 if __name__ == '__main__':
