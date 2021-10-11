@@ -2,6 +2,7 @@ import sqlalchemy
 from datetime import datetime
 from flask_restful import Resource, reqparse 
 from Models.Permits import PermitModel
+from flask_jwt_extended import jwt_required
 
 
 
@@ -17,7 +18,7 @@ class Permit(Resource):
     )
 
    
-
+    @jwt_required()
     def get(self, permit_id):
         permit = PermitModel.find_by_permit_id(permit_id)
         if permit:
@@ -42,7 +43,8 @@ class PermitList(Resource):
         ,required = True
         ,help = 'End Date required'
     )
-
+    
+    @jwt_required()
     def get(self, beg_date, end_date):
         try: 
             format = '%Y-%m-%d'

@@ -1,6 +1,9 @@
 from flask_restful import Resource, reqparse
 from werkzeug.security import safe_str_cmp
 from Models.Users import Users
+from flask_jwt_extended import (
+    create_access_token
+)
 
 
 _user_data_parser = reqparse.RequestParser()
@@ -37,7 +40,8 @@ class UserLogin(Resource):
         user = Users.find_user_name(data['username'])
         
         if user and safe_str_cmp(user.UserPassword, data['password']):
-            return {'message': 'User Login Successful.'}, 200
+            token = create_access_token(identity = user.UserName, fresh = True)
+            return {'token': token, 'message': 'User Login Successful.'}, 200
         return {'message': 'Invalid Credentials submitted.'}, 401
 
 
