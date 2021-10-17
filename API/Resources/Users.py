@@ -2,9 +2,12 @@ from flask_restful import Resource, reqparse
 from werkzeug.security import safe_str_cmp
 from Models.Users import Users
 from flask_jwt_extended import (
-    create_access_token
-)
+    create_access_token,
+    jwt_required,
+    get_jwt_identity,
+    get_jwt)
 
+from Models.blocklist import BlockListModel
 
 _user_data_parser = reqparse.RequestParser()
 
@@ -45,3 +48,23 @@ class UserLogin(Resource):
         return {'message': 'Invalid Credentials submitted.'}, 401
 
 
+class UserLogOut(Resource):
+    
+    @jwt_required()
+    def post(self):
+        """Adds JTI to the Block List Upon Logout.
+        Args: None
+
+        Returns: (Dict) Json object of logout.
+    
+        """
+        jti = get_jwt()['jti']
+        identity = get_jwt_identity()
+        #create block list class 
+        Blocked = BlockListModel(identity = identity, jti =jti)
+        Blocked.add_to_blocklist()
+        
+        return {'message': f'Logout Sucessfull for {identity}. Token has been added'\
+            f' to block list.'
+            ,'token':jti
+            }, 200
