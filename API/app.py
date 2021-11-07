@@ -14,7 +14,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 # Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = key  # Change this!
-app.config['JWT_ACCESS_TOKEN_EXPIRES'] =400 #for now, tokens only last for 1 min (60 secs)
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] =400 
 app.config['JWT_BLACKLIST_ENABLED']=True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['refresh','access']
 
