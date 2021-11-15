@@ -64,11 +64,14 @@ print(re.json()['permits'][0:2])
 
 #### **Permits by Permit ID (GET)**
 If a user know the specific Permit ID for a given permit than a specific GET request can be made to retrieve that information for the specified Permit ID.
+
 **Header:** JWT Authorization Token
+
 **Parameters:**
 - Permits ID: Dallas Permit ID
 
 **EndPoint:** http://157.245.247.53/projects/dallas-permits/permit/
+
 **Method:** GET
 
 ```sh
