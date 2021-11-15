@@ -6,10 +6,14 @@ Processing [Dallas Bulding Permits](https://developdallas.dallascityhall.com/) h
 Users can access the API only with valid credentials. A general login has been created for users where general calls can be made to the API.
 ##### **General Access:** 
 The credentials for the Guests are the following:
+ 
  **UserName:** GuestUser
+ 
  **Password:** password123
 The Login EndPoint is the following:
+ 
  **End Point:** http://157.245.247.53/projects/dallas-permits/login/ 
+
 **Method:** POST
 
 Upon login an JWT Authorization Token will be created. Tokens will automatically expire after 6 minutes. Note that Token must have "Bearer" appended to the access token when performing GET Requests. 
