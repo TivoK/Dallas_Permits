@@ -35,11 +35,13 @@ token = "Bearer " + re.json()['token']
 Users can retrieve New Construction Building Permits created during a specified date range. A provided JWT Authorizationo token is required to make this call. 
 
 **Header:** JWT Authorization Token
+
 **Parameters:**
 - Beg_Date = Begining Date of Permits Created. Dates must be in YYYY-MM-DD format
 - End_Date = Ending Date of Permits Created Dates must in YYYY-MM-DD format
 
 **EndPoint:** http://157.245.247.53/projects/dallas-permits/permits/begdate={Beg_Date}&enddate={End_Date}
+
 **Method:** GET
 
 An example of a call requests by dates can be seen below w/ Python Requests:
