@@ -10,6 +10,7 @@ The credentials for the Guests are the following:
  **UserName:** GuestUser
  
  **Password:** password123
+
 The Login EndPoint is the following:
  
  **End Point:** http://157.245.247.53/projects/dallas-permits/login/ 
